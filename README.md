@@ -2,7 +2,7 @@
 Python script to generate BibTeX from DOI.
 
 # Example
-Input
+Input in command line
 ```
 ./doi2bib.py 10.1137/s0036144504446096
 ```
@@ -21,6 +21,12 @@ Output
   journal = {{SIAM} Review}
 }
 ```
+Or change doi = '*DOI*' in use doi2bib file and run.
+
+## Changes from original jwangac/doi2bib
+- Tag id does not contain first word of title
+- Possibility to exempt tags (month, url, ...) using remove = [*tags as strings*] in convert function: convert(doi, remove = ['month', 'url'])
+
 
 # Requirement
 Python 3
