@@ -1,0 +1,10 @@
+import pyperclip
+
+doi = 'https://doi.org/10.1007/s10930-019-09838-3'
+
+bibfile = convert(doi)
+
+
+pyperclip.copy(f'{bibfile}')
+spam = pyperclip.paste()
+print(bibfile)
