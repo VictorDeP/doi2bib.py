@@ -21,7 +21,7 @@ Output
   journal = {{SIAM} Review}
 }
 ```
-Or change doi = '*DOI*' in use doi2bib file and run.
+Or change doi = '*DOI*' in **use doi2bib** file and run it.
 
 ## Changes from original jwangac/doi2bib
 - Tag id does not contain first word of title
