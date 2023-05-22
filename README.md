@@ -8,7 +8,7 @@ Input in command line
 ```
 Output
 ```
-@article{gill2005snopt,
+@article{gill2005,
   doi = {10.1137/s0036144504446096},
   year = {2005},
   month = {jan},
@@ -23,7 +23,7 @@ Output
 ```
 Or change doi = '*DOI*' in **use_doi2bib.py** file and run it.
 
-## Changes in use_doi2bib.py from original jwangac/doi2bib
+## Changes from original jwangac/doi2bib
 - Tag id does not contain first word of title
 - Possibility to exempt tags (month, url, ...) using remove = [*tags as strings*] in convert function: convert(doi, remove = ['month', 'url'])
 
