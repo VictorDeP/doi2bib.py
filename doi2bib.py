@@ -14,7 +14,7 @@ def set_proxy(proxy):
     urllib.request.install_opener(opener)
 
 
-def convert(doi):
+def convert(doi, remove = ['month', 'url']):
     req = urllib.request.Request(
         url='https://doi.org/{}'.format(doi),
         headers={'Accept': 'application/x-bibtex'}
@@ -32,14 +32,11 @@ def convert(doi):
         if match:
             tags[match.group(1)] = match.group(2)
 
-    if 'url' in tags.keys():
-        del tags['url']
-
     id = ''
     if 'author' in tags.keys():
         first_author = tags['author'].split(' and ')[0]
         last_name = first_author.split(' ')[-1]
-        id = id + ''.join([c.lower() for c in last_name if c.isalpha()])
+        id = id + ''.join([c for c in last_name])
     elif 'editor' in tags.keys():
         # example DOI: 10.2514/1.g002745
         first_editor = tags['editor'].split(' and ')[0]
@@ -52,16 +49,18 @@ def convert(doi):
         id = id + tags['year']
     else:
         id = id + '0000'
-    if 'title' in tags.keys():
-        first_word = tags['title'].split(' ')[0]
-        id = id + ''.join([c.lower() for c in first_word if c.isalpha()])
-    else:
-        id = id + 'na'
+    # Add title first word to id tag
+    #if 'title' in tags.keys():
+        #first_word = tags['title'].split(' ')[0]
+        #id = id + ''.join([c.lower() for c in first_word if c.isalpha()])
+    #else:
+        #id = id + 'na'
 
     val = ''
     val = val + '@' + type + '{' + id
     for key in tags.keys():
-        val = val + ',\n' + '  ' + key + ' = {' + tags[key] + '}'
+            if key not in remove: #remove specified keys in 'remove' argument
+                val = val + ',\n' + '  ' + key + ' = {' + tags[key] + '}'
     val = val + '\n}'
     return val
 
