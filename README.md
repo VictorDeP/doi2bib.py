@@ -21,9 +21,9 @@ Output
   journal = {{SIAM} Review}
 }
 ```
-Or change doi = '*DOI*' in **use doi2bib** file and run it.
+Or change doi = '*DOI*' in **use_doi2bib.py** file and run it.
 
-## Changes from original jwangac/doi2bib
+## Changes in use_doi2bib.py from original jwangac/doi2bib
 - Tag id does not contain first word of title
 - Possibility to exempt tags (month, url, ...) using remove = [*tags as strings*] in convert function: convert(doi, remove = ['month', 'url'])
 
